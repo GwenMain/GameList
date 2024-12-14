@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-
+        <activity android:name=".GameDetailActivity" />
         <!--
         <activity android:name=".Activity2" android:exported="false" />
         -->

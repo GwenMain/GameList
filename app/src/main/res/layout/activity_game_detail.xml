@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Game Name -->
+    <TextView
+        android:id="@+id/gameName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game Name"
+        android:textSize="18sp" />
+
+    <!-- Game Description -->
+    <TextView
+        android:id="@+id/gameDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game Description"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Hráno / Nehráno buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/playedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hráno" />
+
+        <Button
+            android:id="@+id/notPlayedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nehráno"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+    <!-- Recommend buttons -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/recommendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doporučuji"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/notRecommendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nedoporučuji"
+            android:enabled="false"
+            android:layout_marginStart="16dp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/backToMainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Back to Main" />
+
+</LinearLayout>

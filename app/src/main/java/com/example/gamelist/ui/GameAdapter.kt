@@ -1,5 +1,6 @@
 package com.example.gamelist
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -26,6 +27,14 @@ class GameAdapter : ListAdapter<Game, GameAdapter.GameViewHolder>(GameDiffCallba
         fun bind(game: Game) {
             binding.gameName.text = game.name
             binding.gameDescription.text = game.description
+
+            // Set click listener to navigate to GameDetailActivity
+            itemView.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(context, GameDetailActivity::class.java)
+                intent.putExtra("game", game)  // Pass the selected game to GameDetailActivity
+                context.startActivity(intent)
+            }
         }
     }
 
