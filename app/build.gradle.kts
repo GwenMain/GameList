@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.gamelist"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.gamelist"
@@ -15,6 +15,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
     }
 
     buildTypes {
