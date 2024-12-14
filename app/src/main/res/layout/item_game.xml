@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:background="@drawable/card_rounded"
     android:padding="16dp"
-    android:clickable="true"
-    android:focusable="true">
+    android:orientation="vertical"
+    android:layout_marginBottom="6dp"
+    android:layout_marginTop="5dp">
+
 
     <TextView
         android:id="@+id/gameName"
@@ -13,13 +15,13 @@
         android:layout_height="wrap_content"
         android:text="Game Name"
         android:textSize="18sp"
-        android:layout_marginBottom="4dp" />
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/gameDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Game Description"
-        android:textSize="14sp" />
-
+        android:textSize="14sp"
+        android:textColor="@color/black"/>
 </LinearLayout>

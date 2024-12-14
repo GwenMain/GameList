@@ -9,5 +9,8 @@ data class Game(
     val description: String,
     val played: Boolean,
     val liked: Boolean,
-    val disliked: Boolean
+    val disliked: Boolean,
+    val rating: Float,
+    val releaseYear: Int,
+    val platform: String
 ) : Parcelable

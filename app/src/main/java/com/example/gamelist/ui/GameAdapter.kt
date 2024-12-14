@@ -28,11 +28,10 @@ class GameAdapter : ListAdapter<Game, GameAdapter.GameViewHolder>(GameDiffCallba
             binding.gameName.text = game.name
             binding.gameDescription.text = game.description
 
-            // Set click listener to navigate to GameDetailActivity
             itemView.setOnClickListener {
                 val context = itemView.context
                 val intent = Intent(context, GameDetailActivity::class.java)
-                intent.putExtra("game", game)  // Pass the selected game to GameDetailActivity
+                intent.putExtra("game", game)
                 context.startActivity(intent)
             }
         }
