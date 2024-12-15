@@ -1,17 +1,21 @@
 package com.example.gamelist
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gamelist.data.Game
 import com.example.gamelist.databinding.ActivityMainBinding
+import androidx.appcompat.widget.SearchView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var gameAdapter: GameAdapter
+    private val allGames = mutableListOf<Game>()
+    private val filteredGames = mutableListOf<Game>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +25,9 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar) // Ensure the toolbar is set
 
-        val gameAdapter = GameAdapter()
+        gameAdapter = GameAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = gameAdapter
-
-
 
         val sampleGames = listOf(
             Game("The Legend of Zelda", "An epic adventure game", true, false, true, 4.9f, 1998, "Nintendo 64"),
@@ -45,21 +47,32 @@ class MainActivity : AppCompatActivity() {
             Game("Dark Souls III", "Challenging action RPG", true, false, true, 4.9f, 2016, "PC, PS4, Xbox One")
         )
 
-        gameAdapter.submitList(sampleGames)
-    }
+        allGames.addAll(sampleGames)
+        filteredGames.addAll(sampleGames)
+        gameAdapter.submitList(filteredGames)
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
-                true
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Filtrování při stisknutí Enteru
+                if (query != null) {
+                    val filteredList = sampleGames.filter { game ->
+                        game.name.contains(query, ignoreCase = true)
+                    }
+                    gameAdapter.submitList(filteredList)
+                }
+                return true
             }
-            else -> super.onOptionsItemSelected(item)
-        }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Filtrování při změně textu
+                val filteredList = sampleGames.filter { game ->
+                    game.name.contains(newText ?: "", ignoreCase = true)
+                }
+                gameAdapter.submitList(filteredList)
+                return true
+            }
+        })
     }
 }
+
+

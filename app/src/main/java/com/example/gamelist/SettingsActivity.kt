@@ -12,12 +12,14 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Set up action bar with back button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Settings"
+
+        binding.exitAppButton.setOnClickListener {
+            finishAffinity()
+        }
     }
 
-    // Handle back button
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
