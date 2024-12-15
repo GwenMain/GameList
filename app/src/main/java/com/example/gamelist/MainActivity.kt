@@ -1,7 +1,10 @@
 package com.example.gamelist
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gamelist.data.Game
@@ -16,9 +19,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar) // Ensure the toolbar is set
+
         val gameAdapter = GameAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = gameAdapter
+
+
 
         val sampleGames = listOf(
             Game("The Legend of Zelda", "An epic adventure game", true, false, true, 4.9f, 1998, "Nintendo 64"),
@@ -39,5 +46,20 @@ class MainActivity : AppCompatActivity() {
         )
 
         gameAdapter.submitList(sampleGames)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
